@@ -15,7 +15,8 @@ export default function Login() {
   return (
     <>
       Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
+      <button onClick={() => signIn("google")}>Sign in Google</button>
+      <button onClick={() => signIn("linkedin")}>Login com LinkedIn</button>
     </>
   );
 }

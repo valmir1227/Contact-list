@@ -1,0 +1,150 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: var(--white);
+
+  main {
+    display: flex;
+    font-family: var(--inter-font);
+    justify-content: space-between;
+
+    section.text {
+      width: calc(100% - 400px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .logo {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        font-weight: 800;
+        font-size: 2rem;
+        color: #38b88c;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        color: #333333;
+        margin-top: 1rem;
+      }
+
+      .sciLogin {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 0.5rem;
+        font-size: 0.7rem;
+        font-weight: 600;
+        font-weight: 500;
+        color: #333333;
+        margin-top: 1rem;
+        hr {
+          width: 20%;
+        }
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+
+        input {
+          padding: 0.8rem 1rem;
+          width: 300px;
+          border-radius: 2rem;
+          border: none;
+          background: #effaf6;
+          color: #7a7a7a;
+
+          &:focus {
+            outline: 2px solid #3aa6b1;
+          }
+        }
+
+        a {
+          font-size: 0.8rem;
+        }
+
+        button {
+          margin-top: 0.5rem;
+          padding: 1rem 0;
+          border-radius: 2rem;
+          background: #fff;
+          color: #000;
+          font-weight: 600;
+          border: none;
+          box-shadow: 3px 4px 8px -1px rgba(110, 110, 110, 0.5);
+          transition: all 0.3s;
+          cursor: pointer;
+          background: radial-gradient(
+            circle,
+            rgba(56, 184, 140, 1) 0%,
+            rgba(58, 166, 177, 1) 100%
+          );
+
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    section.image {
+      width: 450px;
+      height: 100vh;
+      background: url("../assets/login-bg.jpg") center no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      flex-direction: column;
+      h2 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #fff;
+        text-transform: capitalize;
+      }
+
+      p {
+        color: #fff;
+        margin-top: 0.5rem;
+        text-align: center;
+      }
+
+      a {
+        margin-top: 1rem;
+        padding: 1rem 3rem;
+        border-radius: 2rem;
+        background: #fff;
+        color: #000;
+        font-weight: 600;
+        box-shadow: 3px 4px 8px -1px rgba(110, 110, 110, 0.5);
+        transition: all 0.3s;
+
+        &:hover {
+          color: #fff;
+          background: radial-gradient(
+            circle,
+            rgba(56, 184, 140, 1) 0%,
+            rgba(58, 166, 177, 1) 100%
+          );
+        }
+      }
+    }
+  }
+}
