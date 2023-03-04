@@ -1,28 +1,48 @@
 .container {
   width: 100vw;
   height: 100vh;
-  background: var(--white);
+  background: #fff;
 
   main {
     display: flex;
     font-family: var(--inter-font);
     justify-content: space-between;
-    flex-direction: row-reverse;
+
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+    }
 
     section.text {
-      width: calc(100% - 400px);
+      width: calc(100% - 40%);
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      text-align: center;
+
+      @media screen and (min-width: 320px) and (max-width: 768px) {
+        width: 100% !important;
+        padding: 8rem 1rem 4rem;
+      }
+
+      @media screen and (min-width: 768px) {
+        padding: 2rem;
+      }
+
+      @media screen and (min-width: 1024px) {
+        padding: 3rem;
+      }
 
       .logo {
         position: absolute;
         top: 2rem;
         left: 2rem;
         font-weight: 800;
-        font-size: 2rem;
-        color: #fff;
+        font-size: 1.5rem;
+        color: #38b88c;
+        z-index: 2;
       }
 
       h1 {
@@ -78,7 +98,7 @@
         }
 
         div {
-          width: 300px;
+          width: 18.7rem;
           display: flex;
           align-items: center;
           gap: 5px;
@@ -126,15 +146,31 @@
     }
 
     section.image {
-      width: 450px;
+      width: 40%;
       height: 100vh;
       background: url("../assets/login-bg.jpg") center no-repeat;
       background-size: cover;
       display: flex;
       justify-content: center;
       align-items: center;
-
       flex-direction: column;
+      z-index: 1;
+
+      @media screen and (min-width: 320px) and (max-width: 768px) {
+        width: 100% !important;
+        height: fit-content;
+        padding: 8rem 2rem;
+      }
+
+      @media screen and (min-width: 768px) {
+        width: 28.7rem;
+        padding: 2rem;
+      }
+
+      @media screen and (min-width: 1024px) {
+        padding: 3rem;
+      }
+
       h2 {
         font-size: 3rem;
         font-weight: 800;
