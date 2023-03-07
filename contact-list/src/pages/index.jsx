@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"], variable: "--inter-font" });
-import styles from "@/styles/Home.module.scss";
 
-export default function Home() {
+export default function Home({ context }) {
+
   return (
     <>
       <Head>
@@ -12,9 +12,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={inter.variable}>
-        <h1 className={styles.title}>Ola Mundo</h1>
-      </main>
+      <main className={inter.variable}></main>
     </>
   );
 }

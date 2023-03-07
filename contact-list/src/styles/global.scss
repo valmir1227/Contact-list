@@ -8,8 +8,6 @@
   $white-color: #fff;
   $light-green-color: #38b88c;
   $dark-green-color: #3aa6b1;
-
- 
 }
 
 html,
@@ -22,4 +20,14 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #effaf6 inset !important;
+}
+input:-moz-autofill {
+  -moz-box-shadow: 0 0 0 30px #effaf6 inset !important;
 }
