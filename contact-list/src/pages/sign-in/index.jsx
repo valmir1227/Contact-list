@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--inter-font" });
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
 import styles from "../../styles/signIn.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -20,6 +21,21 @@ const schema = Yup.object().shape({
 });
 
 export default function Index() {
+  const { data: session } = useSession();
+  console.log(session?.accessToken);
+
+  async function postData() {
+    const response = await axios.post(
+      "https://contacts.kanel.com.br/v1/login",
+      {
+        headers: {
+          Authorization: `Bearer ${session?.accessToken}`,
+        },
+      }
+    );
+    console.log(response.data);
+  }
+
   const {
     register,
     handleSubmit,
@@ -43,6 +59,7 @@ export default function Index() {
         >
           <div className={styles.logo}>Logo</div>
           <h1>Entre com a sua conta</h1>
+          <button onClick={postData}>Axios Post</button>
           <p>Entrar usando sua conta social.</p>
           <div className={styles.sciLogin}>
             <FaLinkedin
