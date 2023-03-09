@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--inter-font" });
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
 
 import styles from "../../styles/signUp.module.scss";
+import Logo from "@/components/Logo/Logo";
 
 const schema = yup.object().shape({
   name: yup
@@ -55,7 +56,7 @@ export default function Index() {
     <div className={styles.container}>
       <main className={inter.variable}>
         <motion.section
-          initial={{ x: 1000, width: "28.7rem" }}
+          initial={{ x: 2000, width: "28.7rem" }}
           animate={{
             x: 0,
             width: ["28.7rem", "52rem", "28.7rem"],
@@ -77,7 +78,7 @@ export default function Index() {
           transition={{ duration: 1 }}
           className={styles.text}
         >
-          <div className={styles.logo}>Logo</div>
+          <Logo />
           <h1>Criar Conta</h1>
           <p>Registre-se com suas redes sociais.</p>
           <div className={styles.sciLogin}>
