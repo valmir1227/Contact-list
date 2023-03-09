@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 const inter = Inter({ subsets: ["latin"], variable: "--inter-font" });
 
 import styles from "../../styles/signIn.module.scss";
+import Logo from "@/components/Logo/Logo";
 
 export default function index() {
   return (
@@ -17,7 +18,7 @@ export default function index() {
           transition={{ duration: 1 }}
           className={styles.text}
         >
-          <div className={styles.logo}>Logo</div>
+          <Logo />
           <h1>Entre com a sua conta</h1>
           <p>Entrar usando sua conta social.</p>
           <div className={styles.sciLogin}>
@@ -47,7 +48,7 @@ export default function index() {
         </motion.section>
 
         <motion.section
-          initial={{ x: -1000, width: "28.7rem" }}
+          initial={{ x: -2000, width: "28.7rem" }}
           animate={{
             x: 0,
             width: ["28.7rem", "48rem", "28.7rem"],

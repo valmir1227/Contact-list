@@ -6,13 +6,14 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"], variable: "--inter-font" });
 
 import styles from "../../styles/signUp.module.scss";
+import Logo from "@/components/Logo/Logo";
 
 export default function index() {
   return (
     <div className={styles.container}>
       <main className={inter.variable}>
         <motion.section
-          initial={{ x: 1000, width: "28.7rem" }}
+          initial={{ x: 2000, width: "28.7rem" }}
           animate={{
             x: 0,
             width: ["28.7rem", "48rem", "28.7rem"],
@@ -34,7 +35,7 @@ export default function index() {
           transition={{ duration: 1 }}
           className={styles.text}
         >
-          <div className={styles.logo}>Logo</div>
+          <Logo />
           <h1>Criar Conta</h1>
           <p>Registre-se com suas redes sociais.</p>
           <div className={styles.sciLogin}>
