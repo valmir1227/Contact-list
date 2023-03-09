@@ -83,13 +83,25 @@
         gap: 1rem;
         margin-top: 1rem;
 
+        span.formError {
+          color: red;
+          text-align: left;
+          font-size: 0.7rem;
+          width: 18.7rem;
+        }
+
         input {
           padding: 0.8rem 1rem;
-          width: 300px;
+          width: 18.7rem;
           border-radius: 2rem;
-          border: none;
+          border: 0;
           background: #effaf6;
           color: #7a7a7a;
+          span.formError {
+            color: red;
+            text-align: left;
+            font-size: 0.7rem;
+          }
 
           &:focus {
             outline: 2px solid #3aa6b1;

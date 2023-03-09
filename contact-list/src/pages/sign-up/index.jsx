@@ -1,14 +1,57 @@
-import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { FaGoogle, FaLinkedin } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { signIn, useSession } from "next-auth/react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
 import { Inter } from "next/font/google";
+import { motion } from "framer-motion";
 const inter = Inter({ subsets: ["latin"], variable: "--inter-font" });
+import { FaGoogle, FaLinkedin } from "react-icons/fa";
 
 import styles from "../../styles/signUp.module.scss";
 import Logo from "@/components/Logo/Logo";
 
-export default function index() {
+const schema = yup.object().shape({
+  name: yup
+    .string()
+    .required("Por favor, preencha seu nome")
+    .min(2, "Seu nome deve ter pelo menos 2 caracteres")
+    .max(50, "Seu nome deve ter no máximo 50 caracteres")
+    .matches(
+      /^[a-zA-Z\s]*$/,
+      "Seu nome não deve conter números ou caracteres especiais"
+    ),
+  email: yup
+    .string()
+    .email("Por favor, insira um e-mail válido")
+    .required("Por favor, preencha seu e-mail"),
+  password: yup
+    .string()
+    .required("Por favor, insira uma senha")
+    .min(8, "Sua senha deve ter pelo menos 8 caracteres")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
+      "Sua senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial"
+    ),
+});
+
+export default function Index() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      name: "",
+    },
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className={styles.container}>
       <main className={inter.variable}>
@@ -16,7 +59,7 @@ export default function index() {
           initial={{ x: 2000, width: "28.7rem" }}
           animate={{
             x: 0,
-            width: ["28.7rem", "48rem", "28.7rem"],
+            width: ["28.7rem", "52rem", "28.7rem"],
             transition: { duration: 1 },
           }}
           exit={{ width: "28.7rem" }}
@@ -56,10 +99,25 @@ export default function index() {
             <hr />
             OU <hr />
           </div>
-          <form onSubmit="">
-            <input type="text" placeholder="Nome" required />
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Senha" required />
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input type="text" placeholder="Nome" {...register("name")} />
+            {errors.name && (
+              <span className={styles.formError}>{errors.name.message}</span>
+            )}
+            <input type="email" placeholder="Email" {...register("email")} />
+            {errors.email && (
+              <span className={styles.formError}>{errors.email.message}</span>
+            )}
+            <input
+              type="password"
+              placeholder="Senha"
+              {...register("password")}
+            />
+            {errors.password && (
+              <span className={styles.formError}>
+                {errors.password.message}
+              </span>
+            )}
             <div>
               <input
                 type="checkbox"
