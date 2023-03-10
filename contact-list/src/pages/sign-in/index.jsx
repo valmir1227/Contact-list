@@ -8,11 +8,9 @@ import { motion } from "framer-motion";
 const inter = Inter({ subsets: ["latin"], variable: "--inter-font" });
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
 import styles from "../../styles/signIn.module.scss";
-<<<<<<< HEAD
-import Logo from "@/components/Logo/Logo";
-=======
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
+import Logo from "@/components/Logo/logo";
 
 const schema = Yup.object().shape({
   email: Yup.string()
@@ -50,7 +48,6 @@ export default function Index() {
   const onSubmit = (data) => {
     console.log(data);
   };
->>>>>>> 1d8f7199d003b7678be71d93f90884217440035d
 
   return (
     <div className={styles.container}>
