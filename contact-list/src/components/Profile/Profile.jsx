@@ -1,9 +1,22 @@
+import { useState } from "react";
 import Image from "next/image";
 import { AiFillStar } from "react-icons/ai";
 import styles from "../../components/Profile/profile.module.scss";
 import avatar from "../../assets/avatar.jpg";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper";
+import { Modal } from "../Modal/Modal";
+
 export default function Profile() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageClick = (event) => {
+    setSelectedImage(event.target.src);
+  };
+
   return (
     <div className={styles.container}>
       <section className={styles.profile}>
@@ -55,6 +68,67 @@ export default function Profile() {
           <span>Next.js</span>
           <span>Design</span>
         </div>
+      </div>
+
+      <div className={styles.galerry}>
+        <>
+          {selectedImage && (
+            <Modal
+              image={selectedImage}
+              onClose={() => setSelectedImage(null)}
+            />
+          )}
+          <Swiper
+            effect={"coverflow"}
+            grabCursor={true}
+            autoplay={{
+              delay: 1500,
+              disableOnInteraction: false,
+            }}
+            slidesPerView={"auto"}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            pagination={true}
+            modules={[EffectCoverflow, Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            <SwiperSlide className={styles.slide}>
+              <img
+                src="https://i.pinimg.com/736x/53/1b/90/531b90e1008701cd6c71a38d6d2d0b59.jpg"
+                onClick={handleImageClick}
+              />
+            </SwiperSlide>
+            <SwiperSlide className={styles.slide}>
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfP9-hu2VceVLh0MEBX5RuAT2n4mJUFF8H4Q&usqp=CAU"
+                onClick={handleImageClick}
+              />
+            </SwiperSlide>
+            <SwiperSlide className={styles.slide}>
+              <img
+                src="https://studio1design.com/wp-content/uploads/2019/11/STUDIO1DESIGN-landing-pages-s3-bg.jpg"
+                onClick={handleImageClick}
+              />
+            </SwiperSlide>
+            <SwiperSlide className={styles.slide}>
+              <img
+                src="https://www.creativefabrica.com/wp-content/uploads/2021/03/24/Interior-Design-Landing-Page-Graphics-9910523-1-580x386.jpg"
+                onClick={handleImageClick}
+              />
+            </SwiperSlide>
+            <SwiperSlide className={styles.slide}>
+              <img
+                src="https://media.gettyimages.com/id/1183718913/pt/vetorial/landing-page-template-abstract-design-with-green-gradient-color-trendy-background.jpg?s=612x612&w=gi&k=20&c=cp8f8oFC0OF7jALPAHyxOKNdCCmLzAT1JuHn-WRO-2A="
+                onClick={handleImageClick}
+              />
+            </SwiperSlide>
+          </Swiper>
+        </>
       </div>
     </div>
   );
