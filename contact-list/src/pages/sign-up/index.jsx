@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import { schema } from "@/utils/signUpSchema";
 
 import { Inter } from "next/font/google";
 import { motion } from "framer-motion";
@@ -12,31 +12,7 @@ import { FaGoogle, FaLinkedin } from "react-icons/fa";
 import styles from "../../styles/signUp.module.scss";
 import Logo from "@/components/Logo/Logo";
 
-const schema = yup.object().shape({
-  name: yup
-    .string()
-    .required("Por favor, preencha seu nome")
-    .min(2, "Seu nome deve ter pelo menos 2 caracteres")
-    .max(50, "Seu nome deve ter no máximo 50 caracteres")
-    .matches(
-      /^[a-zA-Z\s]*$/,
-      "Seu nome não deve conter números ou caracteres especiais"
-    ),
-  email: yup
-    .string()
-    .email("Por favor, insira um e-mail válido")
-    .required("Por favor, preencha seu e-mail"),
-  password: yup
-    .string()
-    .required("Por favor, insira uma senha")
-    .min(8, "Sua senha deve ter pelo menos 8 caracteres")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-      "Sua senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial"
-    ),
-});
-
-export default function Index() {
+export default function SignUp() {
   const {
     register,
     handleSubmit,
@@ -55,6 +31,8 @@ export default function Index() {
   return (
     <div className={styles.container}>
       <main className={inter.variable}>
+        <Logo />
+
         <motion.section
           initial={{ x: 2000, width: "28.7rem" }}
           animate={{
@@ -78,7 +56,6 @@ export default function Index() {
           transition={{ duration: 1 }}
           className={styles.text}
         >
-          <Logo />
           <h1>Criar Conta</h1>
           <p>Registre-se com suas redes sociais.</p>
           <div className={styles.sciLogin}>
@@ -99,6 +76,7 @@ export default function Index() {
             <hr />
             OU <hr />
           </div>
+          
           <form onSubmit={handleSubmit(onSubmit)}>
             <input type="text" placeholder="Nome" {...register("name")} />
             {errors.name && (

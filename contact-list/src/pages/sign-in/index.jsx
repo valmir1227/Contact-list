@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
-import * as Yup from "yup";
 import { Inter } from "next/font/google";
 import { motion } from "framer-motion";
 
@@ -9,33 +8,35 @@ const inter = Inter({ subsets: ["latin"], variable: "--inter-font" });
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
 import styles from "../../styles/signIn.module.scss";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
 import Logo from "@/components/Logo/logo";
+import axios from "axios";
+import { useEffect } from "react";
+import { schema } from "@/utils/signInSchema";
 
-const schema = Yup.object().shape({
-  email: Yup.string()
-    .email("Endereço de e-mail inválido")
-    .required("Este campo é obrigatório"),
-  password: Yup.string()
-    .required("Este campo é obrigatório")
-    .min(8, "A senha deve ter pelo menos 8 caracteres"),
-});
+export default function SignIn() {
+  const { data: session, status } = useSession();
+  console.log("STATUS", status);
+  console.log("Session", session);
 
-export default function Index() {
-  const { data: session } = useSession();
-  console.log(session?.accessToken);
+  async function fetchData(session) {
+    if (session) {
+      const url = "url/login";
+      const config = {
+        headers: { Authorization: `Bearer ${session.accessToken}` },
+      };
 
-  async function postData() {
-    const response = await axios.post(
-      "https://contacts.kanel.com.br/v1/login",
-      {
-        headers: {
-          Authorization: `Bearer ${session?.accessToken}`,
-        },
+      try {
+        const response = await axios.post(url, {}, config);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
       }
-    );
-    console.log(response.data);
+    }
   }
+
+  useEffect(() => {
+    fetchData(session);
+  }, [session]);
 
   const {
     register,
@@ -60,7 +61,6 @@ export default function Index() {
         >
           <Logo />
           <h1>Entre com a sua conta</h1>
-          <button onClick={postData}>Axios Post</button>
           <p>Entrar usando sua conta social.</p>
           <div className={styles.sciLogin}>
             <FaLinkedin
@@ -80,6 +80,7 @@ export default function Index() {
             <hr />
             OU <hr />
           </div>
+
           <form onSubmit={handleSubmit(onSubmit)}>
             <input type="email" {...register("email")} />
             {errors.email && (
