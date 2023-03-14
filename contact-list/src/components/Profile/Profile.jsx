@@ -98,32 +98,41 @@ export default function Profile() {
             className="mySwiper"
           >
             <SwiperSlide className={styles.slide}>
-              <img
-                src="https://i.pinimg.com/736x/53/1b/90/531b90e1008701cd6c71a38d6d2d0b59.jpg"
-                onClick={handleImageClick}
-              />
-            </SwiperSlide>
-            <SwiperSlide className={styles.slide}>
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfP9-hu2VceVLh0MEBX5RuAT2n4mJUFF8H4Q&usqp=CAU"
-                onClick={handleImageClick}
-              />
-            </SwiperSlide>
-            <SwiperSlide className={styles.slide}>
-              <img
+              <Image
+                width={1920}
+                height={1080}
                 src="https://studio1design.com/wp-content/uploads/2019/11/STUDIO1DESIGN-landing-pages-s3-bg.jpg"
+                alt=""
                 onClick={handleImageClick}
               />
             </SwiperSlide>
+
             <SwiperSlide className={styles.slide}>
-              <img
-                src="https://www.creativefabrica.com/wp-content/uploads/2021/03/24/Interior-Design-Landing-Page-Graphics-9910523-1-580x386.jpg"
+              <Image
+                width={1920}
+                height={1080}
+                src="https://colorlib.com/wp/wp-content/uploads/sites/2/15_awesome-websites.jpg"
+                alt=""
                 onClick={handleImageClick}
               />
             </SwiperSlide>
+
             <SwiperSlide className={styles.slide}>
-              <img
-                src="https://media.gettyimages.com/id/1183718913/pt/vetorial/landing-page-template-abstract-design-with-green-gradient-color-trendy-background.jpg?s=612x612&w=gi&k=20&c=cp8f8oFC0OF7jALPAHyxOKNdCCmLzAT1JuHn-WRO-2A="
+              <Image
+                width={1920}
+                height={1080}
+                src="https://mllj2j8xvfl0.i.optimole.com/cb:pJlS~36fbd/w:1846/h:875/q:90/f:avif/https://themeisle.com/blog/wp-content/uploads/2019/10/Galleon-and-Caravan.png"
+                alt=""
+                onClick={handleImageClick}
+              />
+            </SwiperSlide>
+
+            <SwiperSlide className={styles.slide}>
+              <Image
+                width={1920}
+                height={1080}
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4WzFd6_g5y8VnTQMG83Ws4BLVTT3u97TQ7Q&usqp=CAU"
+                alt=""
                 onClick={handleImageClick}
               />
             </SwiperSlide>
