@@ -101,6 +101,12 @@
       margin-top: 1rem;
       color: #333;
       font-size: 0.9rem;
+
+      span {
+        color: #38b88c;
+        cursor: pointer;
+        text-decoration: underline;
+      }
     }
   }
 
@@ -117,26 +123,6 @@
       font-size: 0.8rem;
       font-weight: 500;
       color: #333;
-    }
-  }
-
-  .galerry {
-    width: 80%;
-    margin: 1rem;
-
-    @media screen and (min-width: 320px) and (max-width: 640px) {
-      width: 100%;
-    }
-
-    .slide {
-      width: 10.5rem;
-      height: 6.5rem;
-
-      img {
-        border-radius: 5px;
-        width: 100%;
-        height: 100%;
-      }
     }
   }
 }

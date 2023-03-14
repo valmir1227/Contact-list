@@ -1,20 +1,25 @@
 import { useState } from "react";
 import Image from "next/image";
-import { AiFillStar } from "react-icons/ai";
-import styles from "../../components/Profile/profile.module.scss";
+
 import avatar from "../../assets/avatar.jpg";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import { EffectCoverflow, Pagination, Autoplay } from "swiper";
-import { Modal } from "../Modal/Modal";
+import { AiFillStar } from "react-icons/ai";
+import styles from "../../components/Profile/profile.module.scss";
+import Gallery from "../Gallery/Gallery";
 
 export default function Profile() {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [showMore, setShowMore] = useState(false);
 
-  const handleImageClick = (event) => {
-    setSelectedImage(event.target.src);
+ 
+
+  const text =
+    'Olá, Meu nome é Rodrigo Pinheiro Sou especialista em implementação de E-commerce.\nRealizo toda implementação e configuração de E-commerce para Loja fisica ou para\nquem esta começando um novo negócio Online.Eu mesmo executo todo o projeto sem terceirizações.\nConfiguro todos os ERPS(Sistema de Gestão) Existente no mercado Desde a recepção de pedidos, geração de NF a\netapa final de impressão de etiquetas para envio, Realizando a Automatização do E-commerce.\nAuxilio a escolha da Melhor Plataforma de E-commerce(Tray,Loja integrada,Vtex, Nuvemshop.. etc)\nque mais se adequa a seu negócio. Trabalho sempre com Layout Profissionais UX|UI e Designers de ponta\nbuscando sempre a melhor usabilidade ao cliente. Integro todos os meios (getway) de pagamentos e logistícos\nexistente no mercado. E também realizo a integração a todos os Marketplaces disponíveis para integração.\nou seja Realizo projetos completos de Ecommerce do "0" até a primeira venda.\n\nComprovo minha experiência com meu portfólio de projetos realizados. Seria um enorme prazer participar do seu projeto.';
+
+  const truncatedText = text.slice(0, 300) + (text.length > 300 ? "..." : "");
+  const showReadMoreButton = text.length > 300 && !showMore;
+
+  const handleShowMore = () => {
+    setShowMore(!showMore);
   };
 
   return (
@@ -22,7 +27,7 @@ export default function Profile() {
       <section className={styles.profile}>
         <div className={styles.profileContainer}>
           <div className={styles.avatar}>
-            <Image src={avatar} alt="" />
+            <Image src={avatar} alt="" loading="lazy" />
           </div>
 
           <div className={styles.info}>
@@ -42,22 +47,12 @@ export default function Profile() {
 
       <div className={styles.description}>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum
-          architecto voluptates repellat voluptatibus quo corporis dolore
-          assumenda magni. Eos dicta iure voluptatibus! Animi possimus, sed
-          error qui, recusandae fugit velit delectus pariatur magnam veniam
-          eligendi libero quis ut eveniet aspernatur id ullam, tempora
-          distinctio!
-        </p>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi a
-          soluta molestiae eius aut dolorem, eveniet quod tenetur accusantium
-          vero asperiores odit rerum at magni, expedita nesciunt, ab totam
-          dolore adipisci libero voluptates nam! Explicabo, ex libero. Amet,
-          illum commodi. ae eius aut dolorem, eveniet quod tenetur accusantium
-          vero asperiores odit rerum at magni, expedita nesciunt, ab totam
-          dolore adipisci libero voluptates nam! Explicabo, ex libero. Amet,
-          illum commodi.
+          {showMore ? text : truncatedText}
+          {showReadMoreButton ? (
+            <span onClick={handleShowMore}> Expandir</span>
+          ) : (
+            <span onClick={handleShowMore}> Esconder</span>
+          )}
         </p>
 
         <div className={styles.hashtags}>
@@ -70,75 +65,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className={styles.galerry}>
-        <>
-          {selectedImage && (
-            <Modal
-              image={selectedImage}
-              onClose={() => setSelectedImage(null)}
-            />
-          )}
-          <Swiper
-            effect={"coverflow"}
-            grabCursor={true}
-            autoplay={{
-              delay: 1500,
-              disableOnInteraction: false,
-            }}
-            slidesPerView={"auto"}
-            coverflowEffect={{
-              rotate: 50,
-              stretch: 0,
-              depth: 100,
-              modifier: 1,
-              slideShadows: true,
-            }}
-            pagination={true}
-            modules={[EffectCoverflow, Pagination, Autoplay]}
-            className="mySwiper"
-          >
-            <SwiperSlide className={styles.slide}>
-              <Image
-                width={1920}
-                height={1080}
-                src="https://studio1design.com/wp-content/uploads/2019/11/STUDIO1DESIGN-landing-pages-s3-bg.jpg"
-                alt=""
-                onClick={handleImageClick}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.slide}>
-              <Image
-                width={1920}
-                height={1080}
-                src="https://colorlib.com/wp/wp-content/uploads/sites/2/15_awesome-websites.jpg"
-                alt=""
-                onClick={handleImageClick}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.slide}>
-              <Image
-                width={1920}
-                height={1080}
-                src="https://mllj2j8xvfl0.i.optimole.com/cb:pJlS~36fbd/w:1846/h:875/q:90/f:avif/https://themeisle.com/blog/wp-content/uploads/2019/10/Galleon-and-Caravan.png"
-                alt=""
-                onClick={handleImageClick}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide className={styles.slide}>
-              <Image
-                width={1920}
-                height={1080}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4WzFd6_g5y8VnTQMG83Ws4BLVTT3u97TQ7Q&usqp=CAU"
-                alt=""
-                onClick={handleImageClick}
-              />
-            </SwiperSlide>
-          </Swiper>
-        </>
-      </div>
+      <Gallery />
     </div>
   );
 }
