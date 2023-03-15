@@ -10,8 +10,6 @@ import Gallery from "../Gallery/Gallery";
 export default function Profile() {
   const [showMore, setShowMore] = useState(false);
 
- 
-
   const text =
     'Olá, Meu nome é Rodrigo Pinheiro Sou especialista em implementação de E-commerce.\nRealizo toda implementação e configuração de E-commerce para Loja fisica ou para\nquem esta começando um novo negócio Online.Eu mesmo executo todo o projeto sem terceirizações.\nConfiguro todos os ERPS(Sistema de Gestão) Existente no mercado Desde a recepção de pedidos, geração de NF a\netapa final de impressão de etiquetas para envio, Realizando a Automatização do E-commerce.\nAuxilio a escolha da Melhor Plataforma de E-commerce(Tray,Loja integrada,Vtex, Nuvemshop.. etc)\nque mais se adequa a seu negócio. Trabalho sempre com Layout Profissionais UX|UI e Designers de ponta\nbuscando sempre a melhor usabilidade ao cliente. Integro todos os meios (getway) de pagamentos e logistícos\nexistente no mercado. E também realizo a integração a todos os Marketplaces disponíveis para integração.\nou seja Realizo projetos completos de Ecommerce do "0" até a primeira venda.\n\nComprovo minha experiência com meu portfólio de projetos realizados. Seria um enorme prazer participar do seu projeto.';
 
@@ -64,7 +62,6 @@ export default function Profile() {
           <span>Design</span>
         </div>
       </div>
-
       <Gallery />
     </div>
   );
